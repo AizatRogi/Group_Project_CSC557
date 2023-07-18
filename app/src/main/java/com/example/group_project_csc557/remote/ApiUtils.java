@@ -1,5 +1,7 @@
 package com.example.group_project_csc557.remote; // do not copy this package name. use your existing package
 
+import com.example.group_project_csc557.model.Reservation;
+
 public class ApiUtils {
 
     // REST API server URL

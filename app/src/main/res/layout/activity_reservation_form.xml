@@ -62,22 +62,6 @@
         android:inputType="phone"
         android:maxLines="1"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reservation Date"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:id="@+id/txtDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Select reservation date"
-        android:inputType="date"
-        android:maxLines="1"
-        android:clickable="true"/>
-
     <!-- Reservation Date -->
     <TextView
         android:layout_width="wrap_content"
