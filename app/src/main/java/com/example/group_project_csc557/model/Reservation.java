@@ -7,14 +7,16 @@ public class Reservation {
     private String reservationTime;
     private int numberOfGuests;
     private int tableNumber;
+    private String status;
 
-    public Reservation(String name, String phoneNumber, String reservationDate, String reservationTime, int numberOfGuests, int tableNumber) {
+    public Reservation(String name, String phoneNumber, String reservationDate, String reservationTime, int numberOfGuests, int tableNumber, String status) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.reservationDate = reservationDate;
         this.reservationTime = reservationTime;
         this.numberOfGuests = numberOfGuests;
         this.tableNumber = tableNumber;
+        this.status = status;
     }
 
     public String getName() {
@@ -63,5 +65,13 @@ public class Reservation {
 
     public void setTableNumber(int tableNumber) {
         this.tableNumber = tableNumber;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
