@@ -1,26 +1,37 @@
 package com.example.group_project_csc557;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.group_project_csc557.model.Reservation;
 import com.example.group_project_csc557.model.SharedPrefManager;
 import com.example.group_project_csc557.model.User;
+import com.example.group_project_csc557.remote.ApiUtils;
+import com.example.group_project_csc557.remote.ReservationService;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ReservationForm extends AppCompatActivity {
 
@@ -127,8 +138,62 @@ public class ReservationForm extends AppCompatActivity {
         User user = SharedPrefManager.getInstance(getApplicationContext()).getUser();
 
         // send request to add new book to the REST API
+        ReservationService reservationService = ApiUtils.getReservationService();
+        Call<Reservation> call = reservationService.addReservation(user.getToken(), r);
 
+        // execute
+        call.enqueue(new Callback<Reservation>() {
+            @Override
+            public void onResponse(Call<Reservation> call, Response<Reservation> response) {
+
+                // for debug purpose
+                Log.d("MyApp:", "Response: " + response.raw().toString());
+
+                // invalid session?
+                if (response.code() == 401)
+                    displayAlert("Invalid session. Please re-login");
+
+                // book added successfully?
+                Reservation addedReservation = response.body();
+                if (addedReservation != null) {
+                    // display message
+                    Toast.makeText(context,
+                            addedReservation.getName() + " added successfully.",
+                            Toast.LENGTH_LONG).show();
+
+                    // end this activity and forward user to BookListActivity
+                    Intent intent = new Intent(context, CustView.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    displayAlert("Add New Book failed.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Reservation> call, Throwable t) {
+                displayAlert("Error [" + t.getMessage() + "]");
+                // for debug purpose
+                Log.d("MyApp:", "Error: " + t.getCause().getMessage());
+            }
+        });
     }
 
-
+    /**
+     * Displaying an alert dialog with a single button
+     * @param message - message to be displayed
+     */
+    public void displayAlert(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //do things
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 }

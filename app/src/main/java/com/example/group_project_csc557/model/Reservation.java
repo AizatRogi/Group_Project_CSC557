@@ -7,10 +7,10 @@ public class Reservation {
     private String reservationDate;
     private String reservationTime;
     private String numberOfGuests;
-    private int tableNumber;
+    private String tableNumber;
     private String status;
 
-    public Reservation(String name, String phoneNumber, String email, String reservationDate, String reservationTime, String numberOfGuests, int tableNumber, String status) {
+    public Reservation(String name, String phoneNumber, String email, String reservationDate, String reservationTime, String numberOfGuests, String tableNumber, String status) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -68,11 +68,11 @@ public class Reservation {
         this.numberOfGuests = numberOfGuests;
     }
 
-    public int getTableNumber() {
+    public String getTableNumber() {
         return tableNumber;
     }
 
-    public void setTableNumber(int tableNumber) {
+    public void setTableNumber(String tableNumber) {
         this.tableNumber = tableNumber;
     }
 
