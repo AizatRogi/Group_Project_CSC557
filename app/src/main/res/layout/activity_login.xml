@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.group_project_csc557.LoginActivity">
+    tools:context="com.example.group_project_csc557.LoginActivity"
+    android:background="#DAF7A6">
 
 
     <LinearLayout
@@ -40,7 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:text="Login" />
+            android:text="Login"
+            android:backgroundTint="@color/black"/>
 
         <TextView
             android:id="@+id/textViewRegister"
@@ -48,7 +50,28 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:text="Dont' have an account?\nRegister Here"
+            android:text="Dont' have an account?"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Register Here"
+            android:backgroundTint="@color/black"/>
+
+        <TextView
+            android:id="@+id/textViewCopyright"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
@@ -64,7 +87,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="500px"
-        android:layout_height="500px"
+        android:layout_centerHorizontal="true"
+        android:layout_width="650px"
+        android:layout_height="650px"
+
         app:srcCompat="@drawable/makan" />
 </RelativeLayout>

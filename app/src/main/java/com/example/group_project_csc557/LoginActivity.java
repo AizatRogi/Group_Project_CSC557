@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
                         // forward user to MainActivity
                         finish();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), ReservationForm.class));
 
                     }
                 }
