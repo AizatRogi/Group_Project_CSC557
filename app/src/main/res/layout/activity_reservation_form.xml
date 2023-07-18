@@ -23,7 +23,7 @@
         android:textSize="16sp"/>
 
     <EditText
-        android:id="@+id/edit_text_name"
+        android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your name"
@@ -39,7 +39,7 @@
         android:layout_marginTop="16dp"/>
 
     <EditText
-        android:id="@+id/edit_text_email"
+        android:id="@+id/txtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your email"
@@ -55,12 +55,28 @@
         android:layout_marginTop="16dp"/>
 
     <EditText
-        android:id="@+id/edit_text_phone"
+        android:id="@+id/txtPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your phone number"
         android:inputType="phone"
         android:maxLines="1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reservation Date"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/txtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select reservation date"
+        android:inputType="date"
+        android:maxLines="1"
+        android:clickable="true"/>
 
     <!-- Reservation Date -->
     <TextView
@@ -70,15 +86,26 @@
         android:textSize="16sp"
         android:layout_marginTop="16dp"/>
 
-    <EditText
-        android:id="@+id/edit_text_reservation_date"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Select reservation date"
-        android:inputType="date"
-        android:maxLines="1"
-        android:focusable="false"
-        android:clickable="true"/>
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvCreated"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="YYYY-MM-DD" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Pick Date"
+            android:layout_weight="0.35"
+            android:onClick="showDatePickerDialog" />
+
+    </LinearLayout>
 
     <!-- Reservation Time -->
     <TextView
@@ -89,13 +116,12 @@
         android:layout_marginTop="16dp"/>
 
     <EditText
-        android:id="@+id/edit_text_reservation_time"
+        android:id="@+id/txtTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Select reservation time"
         android:inputType="time"
         android:maxLines="1"
-        android:focusable="false"
         android:clickable="true"/>
 
     <!-- Number of Guests -->
@@ -115,6 +141,7 @@
 
     <Button
         android:id="@+id/button_reserve"
+        android:onClick="reserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reserve Table"
