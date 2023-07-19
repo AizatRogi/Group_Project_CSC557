@@ -1,16 +1,15 @@
 package com.example.group_project_csc557; // do not copy this package name. use your existing package
 
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.group_project_csc557.model.ErrorResponse;
-import com.example.group_project_csc557.model.SharedPrefManager;
 import com.example.group_project_csc557.model.User;
 import com.example.group_project_csc557.remote.ApiUtils;
 import com.example.group_project_csc557.remote.UserService;
@@ -34,14 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        // if the user is already logged in we will directly start
-        // the main activity
-        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
-            finish();// stop this LoginActivity
-            startActivity(new Intent(this, MainActivity.class));
-            return;
-        }
 
         // get references to form elements
         edtUsername = findViewById(R.id.edtUsername);
@@ -70,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Validate value of username and password entered. Client side validation.
+     *
      * @param username
      * @param password
      * @return
@@ -88,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Call REST API to login
+     *
      * @param username
      * @param password
      */
@@ -106,16 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                         // successful login. server replies a token value
                         displayToast("Login successful");
                         displayToast("Token: " + user.getToken());
-
-                        // store value in Shared Preferences
-                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
-                        // forward user to MainActivity
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), CustView.class));
-
                     }
-                }
-                else if (response.errorBody() != null){
+                } else if (response.errorBody() != null) {
                     // parse response to POJO
                     String errorResp = null;
                     try {
@@ -123,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    ErrorResponse e = new Gson().fromJson( errorResp, ErrorResponse.class);
+                    ErrorResponse e = new Gson().fromJson(errorResp, ErrorResponse.class);
                     displayToast(e.getError().getMessage());
                 }
 
@@ -140,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Display a Toast message
+     *
      * @param message
      */
     public void displayToast(String message) {
