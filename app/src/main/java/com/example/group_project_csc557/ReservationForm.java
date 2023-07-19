@@ -46,7 +46,7 @@ public class ReservationForm extends AppCompatActivity {
     private Spinner spinner_guests;
     private Context context;
 
-    private Button btReserve;
+    //private Button btReserve;
 
     /**
      * Date picker fragment class
@@ -94,7 +94,7 @@ public class ReservationForm extends AppCompatActivity {
         txtTime = findViewById(R.id.txtTime);
         tvCreated = findViewById(R.id.tvCreated);
         spinner_guests = findViewById(R.id.spinner_guests);
-        btReserve = findViewById(R.id.btReserve);
+        //btReserve = findViewById(R.id.btReserve);
 
         // set default createdAt value, get current date
         createdAt = new Date();
@@ -102,6 +102,21 @@ public class ReservationForm extends AppCompatActivity {
         // display in the label beside the button with specific date format
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         tvCreated.setText( sdf.format(createdAt));
+
+        // set onClick action to btnLogin
+//        btReserve.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // get details entered by user
+//                String name = txtName.getText().toString();
+//                String email = txtEmail.getText().toString();
+//                String phone = txtPhone.getText().toString();
+//                String time = txtTime.getText().toString();
+//                String date = tvCreated.getText().toString();
+//                String numGuest = spinner_guests.getSelectedItem().toString();
+//
+//            }
+//        });
     }
 
     /**
@@ -136,7 +151,7 @@ public class ReservationForm extends AppCompatActivity {
         String updated_at = created_at;
 
         // create a Reservation object
-        Reservation r = new Reservation(name, email, phone, created_at, time, numGuest, null,null);
+        Reservation r = new Reservation(name, email, phone, created_at, time,numGuest);
 
         // get user info from SharedPreferences
         User user = SharedPrefManager.getInstance(getApplicationContext()).getUser();
@@ -170,7 +185,7 @@ public class ReservationForm extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    displayAlert("Add New Book failed.");
+                    displayAlert("Add New Reservation failed.");
                 }
             }
 

@@ -7,18 +7,20 @@ public class Reservation {
     private String reservationDate;
     private String reservationTime;
     private String numberOfGuests;
-    private String tableNumber;
-    private String status;
+//    private String tableNumber;
+//    private String status;
 
-    public Reservation(String name, String phoneNumber, String email, String reservationDate, String reservationTime, String numberOfGuests, String tableNumber, String status) {
+    public Reservation(String name, String phoneNumber, String email, String reservationDate, String reservationTime, String numberOfGuests)
+    //, String tableNumber, String status
+    {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.reservationDate = reservationDate;
         this.reservationTime = reservationTime;
         this.numberOfGuests = numberOfGuests;
-        this.tableNumber = tableNumber;
-        this.status = status;
+//        this.tableNumber = tableNumber;
+//        this.status = status;
     }
 
     public String getName() {
@@ -36,6 +38,7 @@ public class Reservation {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
     public String getEmail() {
         return email;
     }
@@ -66,21 +69,5 @@ public class Reservation {
 
     public void setNumberOfGuests(String numberOfGuests) {
         this.numberOfGuests = numberOfGuests;
-    }
-
-    public String getTableNumber() {
-        return tableNumber;
-    }
-
-    public void setTableNumber(String tableNumber) {
-        this.tableNumber = tableNumber;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }
