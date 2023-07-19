@@ -124,8 +124,7 @@
         android:entries="@array/guests_array"/>
 
     <Button
-        android:id="@+id/button_reserve"
-        android:onClick="reserve"
+        android:id="@+id/btReserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reserve Table"

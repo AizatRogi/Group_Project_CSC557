@@ -9,7 +9,7 @@ import com.example.group_project_csc557.LoginActivity; // do not copy this impor
 public class SharedPrefManager {
 
     //the constants
-    private static final String SHARED_PREF_NAME = "bookstoresharedpref";
+    private static final String SHARED_PREF_NAME = "restaurantsharedpref";
     private static final String KEY_ID = "keyid";
     private static final String KEY_USERNAME = "keyusername";
     private static final String KEY_EMAIL = "keyemail";

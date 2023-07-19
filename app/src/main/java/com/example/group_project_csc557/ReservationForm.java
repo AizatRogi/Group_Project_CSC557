@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -44,6 +45,8 @@ public class ReservationForm extends AppCompatActivity {
 
     private Spinner spinner_guests;
     private Context context;
+
+    private Button btReserve;
 
     /**
      * Date picker fragment class
@@ -91,6 +94,7 @@ public class ReservationForm extends AppCompatActivity {
         txtTime = findViewById(R.id.txtTime);
         tvCreated = findViewById(R.id.tvCreated);
         spinner_guests = findViewById(R.id.spinner_guests);
+        btReserve = findViewById(R.id.btReserve);
 
         // set default createdAt value, get current date
         createdAt = new Date();
